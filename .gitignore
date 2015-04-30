@@ -1,1 +1,5 @@
 # to be completed
+distrib/
+node_modules/
+src/vendor/
+src/css/
