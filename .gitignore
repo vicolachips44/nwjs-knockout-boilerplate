@@ -3,3 +3,4 @@ distrib/
 node_modules/
 src/vendor/
 src/css/
+src/fonts/
