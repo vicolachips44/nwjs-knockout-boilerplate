@@ -15,7 +15,7 @@ you'll need this one for the above command https://github.com/mllrsohn/node-webk
 
 to build the distrib folder just type `grunt` in root folder
 
-The you can try the builded version by doing: 
+Then you can try the builded version: 
 
 ```sh
 nwbuild -r distrib/
