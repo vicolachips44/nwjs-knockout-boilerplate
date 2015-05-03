@@ -1,11 +1,10 @@
 requirejs.config({
-  baseUrl: 'src',
   paths: {
-    "app": "../js/app",
-    "welcome": "../js/controller/welcome",
     "jquery": "../vendor/jquery/dist/jquery",
     "knockout": "../vendor/knockout/dist/knockout.debug",
     "underscore": "../vendor/underscore/underscore",
+    "app": "app",
+    "welcome": "controller/welcome",
   },
   shim: {
     "jquery": {
