@@ -9,7 +9,7 @@ define(['jquery', 'knockout'], function($, ko) {
     load: function() {
       console.log('in welcome controller load function');
       var fs = require('fs');
-      var $html = fs.readFileSync('../src/templates/welcome.html', 'utf8');
+      var $html = fs.readFileSync('templates/welcome.html', 'utf8');
       console.log($html);
       $('#ko_page_content').html($html);
       ko.applyBindings(this);

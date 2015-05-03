@@ -13,6 +13,7 @@ module.exports = function(grunt) {
         'cp -r src/css distrib/',
         'cp -r src/fonts distrib/',
         'cp src/package.json distrib/',
+        'cp -r src/templates distrib/',
       ].join('&&')
     },
 
