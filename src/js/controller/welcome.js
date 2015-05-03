@@ -1,4 +1,6 @@
 define(['jquery', 'knockout'], function($, ko) {
+  var fs = require('fs');
+
   function WelcomeCtrl() {
     this.greeting = ko.observable('Welcome to knockout world!!');
   }
@@ -7,8 +9,8 @@ define(['jquery', 'knockout'], function($, ko) {
     constructor: WelcomeCtrl,
 
     load: function() {
+
       console.log('in welcome controller load function');
-      var fs = require('fs');
       var $html = fs.readFileSync('templates/welcome.html', 'utf8');
       console.log($html);
       $('#ko_page_content').html($html);
@@ -17,6 +19,5 @@ define(['jquery', 'knockout'], function($, ko) {
   };
 
   return new WelcomeCtrl();
-
 
 });

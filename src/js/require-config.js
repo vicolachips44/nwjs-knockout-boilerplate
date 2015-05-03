@@ -1,21 +1,21 @@
 requirejs.config({
   paths: {
-    "jquery": "../vendor/jquery/dist/jquery",
-    "knockout": "../vendor/knockout/dist/knockout.debug",
-    "underscore": "../vendor/underscore/underscore",
-    "app": "app",
-    "welcome": "controller/welcome",
+    jquery:      '../vendor/jquery/dist/jquery',
+    knockout:    '../vendor/knockout/dist/knockout.debug',
+    underscore:  '../vendor/underscore/underscore',
+    app:         'app',
+    welcome:     'controller/welcome'
   },
   shim: {
-    "jquery": {
+    jquery: {
       exports: '$'
     },
-    "underscore": {
-      exports: "_"
+    underscore: {
+      exports: '_'
     },
-    "knockout": {
+    knockout: {
       deps: ['jquery'],
-      exports: "ko"
+      exports: 'ko'
     }
   }
 });

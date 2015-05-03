@@ -20,9 +20,9 @@ module.exports = function(grunt) {
         'rm -rf src/css',
         'mkdir src/css',
         'cp src/vendor/bootstrap/dist/css/bootstrap.min.css src/css',
-        'cp -r src/vendor/bootstrap/dist/fonts src/fonts',
+        'cp -r src/vendor/bootstrap/dist/fonts src/fonts'
       ].join('&&')
-    },
+    }
   });
 
   grunt.config('htmlmin', {
@@ -40,20 +40,43 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.config('jshint', {
+    options: {
+      curly: true,
+      eqeqeq: true,
+      eqnull: true,
+      browser: true,
+      globals: {
+        jQuery: true,
+        define: true,
+        requirejs: true
+      }
+    },
+    all: ['Gruntfile.js', 'src/js/**/*.js']
+  });
+
+  grunt.config('jscs', {
+    options: {
+      config: '.jscs.json'
+    },
+    src: ['Gruntfile.js', 'src/js/**/*.js']
+  });
+
   grunt.config('requirejs', {
     compile: {
       options: {
         name: 'app',
-        baseUrl: "src/js",
-        mainConfigFile: "src/js/require-config.js",
-        out: "distrib/js/bootloader.js",
-        include: ['../vendor/requirejs/require', 'require-config.js'],
-        optimize: 'none'
+        baseUrl: 'src/js',
+        mainConfigFile: 'src/js/require-config.js',
+        out: 'distrib/js/bootloader.js',
+        preserveLicenseComments: false,
+        include: ['../vendor/requirejs/require', 'require-config.js']
+        // optimize: 'none'
       }
     }
   });
 
   grunt.registerTask('init', ['shell:cpcss']);
-  grunt.registerTask('default', ['shell:build', 'requirejs:compile', 'htmlmin:dist']);
+  grunt.registerTask('default', ['jshint', 'jscs', 'shell:build', 'requirejs:compile', 'htmlmin:dist']);
 
 };
