@@ -12,11 +12,9 @@ module.exports = function(grunt) {
         'cp src/index.html distrib/',
         'cp -r src/css distrib/',
         'cp -r src/fonts distrib/',
-        'cp src/package.json distrib/',
-        'cp -r src/templates distrib/',
+        'cp src/package.json distrib/'
       ].join('&&')
     },
-
     cpcss: {
       command: [
         'rm -rf src/css',
@@ -25,6 +23,21 @@ module.exports = function(grunt) {
         'cp -r src/vendor/bootstrap/dist/fonts src/fonts',
       ].join('&&')
     },
+  });
+
+  grunt.config('htmlmin', {
+    dist: {
+      options: {
+        removeComments: true,
+        collapseWhitespace: true
+      },
+      files: [{
+        expand: true,
+        cwd: 'src/templates',
+        src: '**/*.html',
+        dest: 'distrib/templates'
+      }]
+    }
   });
 
   grunt.config('requirejs', {
@@ -41,6 +54,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('init', ['shell:cpcss']);
-  grunt.registerTask('default', ['shell:build', 'requirejs:compile']);
+  grunt.registerTask('default', ['shell:build', 'requirejs:compile', 'htmlmin:dist']);
 
 };
